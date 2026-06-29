@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "921255675309",
+    "project_id": "rook-sport",
+    "storage_bucket": "rook-sport.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:921255675309:android:f982d442aa1357f7adcd24",
+        "android_client_info": {
+          "package_name": "com.rook.sport"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXQ5LA2lDZxrBd2Yf0hZCL8ubNiTnHjp4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:921255675309:android:ae2a3792694d9878adcd24",
+        "android_client_info": {
+          "package_name": "com.rook.sport.admin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXQ5LA2lDZxrBd2Yf0hZCL8ubNiTnHjp4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
