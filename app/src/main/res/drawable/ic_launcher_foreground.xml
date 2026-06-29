@@ -3,10 +3,10 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- Stylized golden "R" mark for ROOK Sport -->
     <path
         android:fillColor="#F5B50A"
         android:pathData="M40,36 H60 a12,12 0 0 1 0,24 H52 L66,76 H56 L44,62 V76 H40 Z M48,44 V54 H59 a5,5 0 0 0 0,-10 Z" />
     <path
         android:fillColor="#FFD25F"
         android:pathData="M50,28 L55,33 L50,38 L45,33 Z" />
+</vector>
