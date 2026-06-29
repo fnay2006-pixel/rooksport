@@ -1,0 +1,53 @@
+name: بناء تطبيقات ROOK Sport (APK)
+
+# يعمل تلقائياً عند رفع الكود، أو يدوياً بضغطة زر من تبويب Actions
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:   # ← زر "Run workflow" اليدوي
+
+jobs:
+  build:
+    name: بناء APK للمستخدم والأدمن
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: تنزيل الكود
+        uses: actions/checkout@v4
+
+      - name: تجهيز Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: تجهيز Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: توليد ملف Gradle Wrapper
+        run: gradle wrapper --gradle-version 8.9
+
+      - name: منح صلاحية التنفيذ
+        run: chmod +x ./gradlew
+
+      # ===== تطبيق المستخدم =====
+      - name: بناء تطبيق المستخدم (User APK)
+        run: ./gradlew :app:assembleDebug --no-daemon --stacktrace
+
+      - name: رفع APK المستخدم
+        uses: actions/upload-artifact@v4
+        with:
+          name: ROOK-Sport-USER-APK
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+      # ===== تطبيق الأدمن =====
+      - name: بناء تطبيق الأدمن (Admin APK)
+        run: ./gradlew :admin:assembleDebug --no-daemon --stacktrace
+
+      - name: رفع APK الأدمن
+        uses: actions/upload-artifact@v4
+        with:
+          name: ROOK-Sport-ADMIN-APK
+          path: admin/build/outputs/apk/debug/admin-debug.apk
+          if-no-files-found: error

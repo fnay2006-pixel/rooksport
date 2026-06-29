@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZONA Sport — معاينة التطبيق</title>
+<style>
+  :root{
+    --bg:#0a0e1a;
+    --bg2:#0f1626;
+    --card:#141d33;
+    --card2:#1a2540;
+    --gold:#f5b50a;
+    --gold2:#ffd25f;
+    --accent:#00e0a4;
+    --accent2:#00b4ff;
+    --red:#ff3b5c;
+    --text:#eef2fb;
+    --muted:#8b97b5;
+    --line:rgba(255,255,255,.07);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:radial-gradient(1200px 600px at 50% -10%,#16203a 0%,var(--bg) 60%);
+    color:var(--text);
+    display:flex;justify-content:center;align-items:flex-start;
+    min-height:100vh;padding:24px 12px;
+  }
+  .device-wrap{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
+  .phone{
+    width:390px;height:844px;
+    background:var(--bg);
+    border-radius:44px;
+    border:11px solid #05080f;
+    box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.04) inset;
+    position:relative;overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:150px;height:30px;background:#05080f;border-radius:0 0 18px 18px;z-index:50}
+  .statusbar{display:flex;justify-content:space-between;padding:14px 26px 6px;font-size:13px;font-weight:600;color:var(--text);z-index:40}
+  .scroll{flex:1;overflow-y:auto;overflow-x:hidden;scrollbar-width:none}
+  .scroll::-webkit-scrollbar{display:none}
+
+  /* Header */
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:6px 18px 14px}
+  .brand{display:flex;align-items:center;gap:10px}
+  .logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--gold2));display:grid;place-items:center;font-weight:900;color:#0a0e1a;font-size:20px;box-shadow:0 8px 20px rgba(245,181,10,.35)}
+  .brand h1{font-size:19px;font-weight:800;letter-spacing:.5px}
+  .brand h1 span{color:var(--gold)}
+  .brand small{display:block;font-size:9px;color:var(--muted);letter-spacing:3px;font-weight:600}
+  .icons{display:flex;gap:8px}
+  .ic{width:38px;height:38px;border-radius:11px;background:var(--card);display:grid;place-items:center;border:1px solid var(--line);position:relative}
+  .ic svg{width:19px;height:19px;stroke:var(--text);fill:none;stroke-width:2}
+  .dot{position:absolute;top:8px;left:8px;width:8px;height:8px;background:var(--red);border-radius:50%;border:2px solid var(--card)}
+
+  /* Hero live match */
+  .hero{margin:4px 16px 0;border-radius:24px;overflow:hidden;position:relative;background:linear-gradient(135deg,#1b2a52,#0d1426);border:1px solid var(--line);padding:18px}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(400px 200px at 80% 0%,rgba(0,224,164,.18),transparent),radial-gradient(300px 200px at 10% 100%,rgba(0,180,255,.15),transparent)}
+  .hero-top{position:relative;display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+  .live-badge{display:flex;align-items:center;gap:6px;background:var(--red);padding:5px 11px;border-radius:30px;font-size:11px;font-weight:800;letter-spacing:1px}
+  .live-badge .pulse{width:7px;height:7px;background:#fff;border-radius:50%;animation:pulse 1.3s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .league{font-size:11px;color:var(--muted);font-weight:600}
+  .match{position:relative;display:flex;align-items:center;justify-content:space-between}
+  .team{display:flex;flex-direction:column;align-items:center;gap:8px;width:90px}
+  .crest{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:24px;font-weight:900;box-shadow:0 8px 18px rgba(0,0,0,.4)}
+  .team span{font-size:13px;font-weight:700;text-align:center}
+  .score{text-align:center}
+  .score .num{font-size:38px;font-weight:900;letter-spacing:2px}
+  .score .time{font-size:12px;color:var(--accent);font-weight:700;margin-top:2px}
+  .watch-btn{position:relative;margin-top:16px;width:100%;padding:13px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0e1a;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:8px}
+  .watch-btn svg{width:18px;height:18px;fill:#0a0e1a}
+
+  /* Section titles */
+  .sec{padding:24px 18px 4px;display:flex;justify-content:space-between;align-items:center}
+  .sec h2{font-size:16px;font-weight:800}
+  .sec a{font-size:12px;color:var(--gold);font-weight:600;text-decoration:none}
+
+  /* Category chips */
+  .chips{display:flex;gap:9px;padding:12px 18px;overflow-x:auto;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:0 0 auto;padding:9px 16px;border-radius:30px;background:var(--card);border:1px solid var(--line);font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap}
+  .chip.active{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0e1a;border-color:transparent;font-weight:800}
+
+  /* Channels grid */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:4px 16px}
+  .channel{background:var(--card);border-radius:18px;padding:14px;border:1px solid var(--line);position:relative;overflow:hidden}
+  .channel .thumb{height:80px;border-radius:12px;display:grid;place-items:center;font-weight:900;font-size:18px;margin-bottom:10px;position:relative}
+  .channel .hd{position:absolute;top:6px;left:6px;background:rgba(0,0,0,.5);padding:2px 7px;border-radius:6px;font-size:9px;font-weight:800;color:var(--gold)}
+  .channel h3{font-size:13px;font-weight:700}
+  .channel p{font-size:11px;color:var(--muted);margin-top:3px}
+  .channel .livetag{position:absolute;top:6px;right:6px;background:var(--red);padding:2px 7px;border-radius:6px;font-size:9px;font-weight:800;display:flex;align-items:center;gap:4px}
+  .channel .livetag i{width:5px;height:5px;background:#fff;border-radius:50%}
+
+  /* match list */
+  .mlist{padding:4px 16px}
+  .mrow{display:flex;align-items:center;background:var(--card);border-radius:16px;padding:12px 14px;margin-bottom:10px;border:1px solid var(--line);gap:12px}
+  .mrow .ml-league{font-size:10px;color:var(--muted);width:54px;text-align:center;border-left:1px solid var(--line);padding-left:10px}
+  .mrow .ml-teams{flex:1}
+  .mrow .ml-team{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;margin:3px 0}
+  .mrow .ml-team .mini{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800}
+  .mrow .ml-time{text-align:center;width:54px}
+  .mrow .ml-time .t{font-size:15px;font-weight:800;color:var(--gold)}
+  .mrow .ml-time .s{font-size:9px;color:var(--muted)}
+
+  /* bottom nav */
+  .nav{position:absolute;bottom:0;left:0;right:0;height:78px;background:rgba(10,14,26,.92);backdrop-filter:blur(20px);border-top:1px solid var(--line);display:flex;justify-content:space-around;align-items:center;padding-bottom:14px;z-index:30}
+  .navitem{display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--muted);font-size:10px;font-weight:600;position:relative}
+  .navitem svg{width:22px;height:22px;stroke:var(--muted);fill:none;stroke-width:2}
+  .navitem.active{color:var(--gold)}
+  .navitem.active svg{stroke:var(--gold)}
+  .navitem.center{margin-top:-26px}
+  .navitem.center .cbtn{width:56px;height:56px;border-radius:18px;background:linear-gradient(135deg,var(--gold),var(--gold2));display:grid;place-items:center;box-shadow:0 10px 24px rgba(245,181,10,.4)}
+  .navitem.center .cbtn svg{width:26px;height:26px;stroke:#0a0e1a;fill:#0a0e1a}
+  .spacer{height:90px}
+  .label{font-size:11px;color:var(--muted);text-align:center;margin-top:14px;letter-spacing:1px}
+</style>
+</head>
+<body>
+<div class="device-wrap">
+  <div class="phone">
+    <div class="notch"></div>
+    <div class="statusbar"><span>9:41</span><span>‎●●●●  5G  ▮▮▮</span></div>
+    <div class="scroll">
+      <!-- Top bar -->
+      <div class="topbar">
+        <div class="brand">
+          <div class="logo">Z</div>
+          <div>
+            <h1>ZONA<span> Sport</span></h1>
+            <small>LIVE SPORTS HUB</small>
+          </div>
+        </div>
+        <div class="icons">
+          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></div>
+          <div class="ic"><div class="dot"></div><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
+        </div>
+      </div>
+
+      <!-- Hero live match -->
+      <div class="hero">
+        <div class="hero-top">
+          <div class="live-badge"><span class="pulse"></span> مباشر الآن</div>
+          <div class="league">⚽ دوري أبطال أوروبا</div>
+        </div>
+        <div class="match">
+          <div class="team">
+            <div class="crest" style="background:linear-gradient(135deg,#c8102e,#7a0a1d)">RM</div>
+            <span>ريال مدريد</span>
+          </div>
+          <div class="score">
+            <div class="num">2 - 1</div>
+            <div class="time">⏱ 67'</div>
+          </div>
+          <div class="team">
+            <div class="crest" style="background:linear-gradient(135deg,#004d98,#a50044)">FC</div>
+            <span>برشلونة</span>
+          </div>
+        </div>
+        <button class="watch-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> مشاهدة البث المباشر — HD</button>
+      </div>
+
+      <!-- Categories -->
+      <div class="chips">
+        <div class="chip active">🔥 الكل</div>
+        <div class="chip">⚽ كرة القدم</div>
+        <div class="chip">🏀 كرة السلة</div>
+        <div class="chip">🎾 تنس</div>
+        <div class="chip">🏎️ فورمولا 1</div>
+        <div class="chip">🥊 ملاكمة</div>
+      </div>
+
+      <!-- Channels -->
+      <div class="sec"><h2>القنوات المباشرة</h2><a href="#">عرض الكل ›</a></div>
+      <div class="grid">
+        <div class="channel">
+          <div class="thumb" style="background:linear-gradient(135deg,#5b2a86,#2d1245)">
+            <span class="livetag"><i></i>LIVE</span><span class="hd">HD</span>SPORT 1</div>
+          <h3>قناة الرياضية 1</h3><p>الدوري الإنجليزي</p>
+        </div>
+        <div class="channel">
+          <div class="thumb" style="background:linear-gradient(135deg,#0a5c4a,#03281f)">
+            <span class="livetag"><i></i>LIVE</span><span class="hd">4K</span>SPORT 2</div>
+          <h3>قناة الرياضية 2</h3><p>الدوري الإسباني</p>
+        </div>
+        <div class="channel">
+          <div class="thumb" style="background:linear-gradient(135deg,#1d4e89,#0a2342)"><span class="hd">HD</span>NEWS</div>
+          <h3>الأخبار الرياضية</h3><p>تحليلات واستوديو</p>
+        </div>
+        <div class="channel">
+          <div class="thumb" style="background:linear-gradient(135deg,#a8500a,#5e2c05)"><span class="hd">HD</span>F1</div>
+          <h3>سباقات F1</h3><p>جائزة موناكو الكبرى</p>
+        </div>
+      </div>
+
+      <!-- Upcoming matches -->
+      <div class="sec"><h2>مباريات اليوم</h2><a href="#">الجدول ›</a></div>
+      <div class="mlist">
+        <div class="mrow">
+          <div class="ml-teams">
+            <div class="ml-team"><span class="mini" style="background:#c8102e">LI</span> ليفربول</div>
+            <div class="ml-team"><span class="mini" style="background:#6cabdd;color:#000">MC</span> مان سيتي</div>
+          </div>
+          <div class="ml-time"><div class="t">21:00</div><div class="s">اليوم</div></div>
+          <div class="ml-league">البريميرليغ</div>
+        </div>
+        <div class="mrow">
+          <div class="ml-teams">
+            <div class="ml-team"><span class="mini" style="background:#000;color:#fff">JU</span> يوفنتوس</div>
+            <div class="ml-team"><span class="mini" style="background:#0068a8">NA</span> نابولي</div>
+          </div>
+          <div class="ml-time"><div class="t">23:45</div><div class="s">اليوم</div></div>
+          <div class="ml-league">السيري آ</div>
+        </div>
+        <div class="mrow">
+          <div class="ml-teams">
+            <div class="ml-team"><span class="mini" style="background:#e30613">BY</span> بايرن ميونخ</div>
+            <div class="ml-team"><span class="mini" style="background:#fde100;color:#000">DO</span> دورتموند</div>
+          </div>
+          <div class="ml-time"><div class="t">19:30</div><div class="s">غداً</div></div>
+          <div class="ml-league">البوندسليغا</div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+    </div>
+
+    <!-- Bottom nav -->
+    <div class="nav">
+      <div class="navitem active"><svg viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>الرئيسية</div>
+      <div class="navitem"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3l-4 4-4-4"/></svg>القنوات</div>
+      <div class="navitem center"><div class="cbtn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+      <div class="navitem"><svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18"/><rect x="3" y="4" width="18" height="18" rx="2"/></svg>المباريات</div>
+      <div class="navitem"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>حسابي</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

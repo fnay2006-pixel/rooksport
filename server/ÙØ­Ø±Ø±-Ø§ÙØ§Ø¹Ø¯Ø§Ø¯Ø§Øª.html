@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROOK Sport — محرر الإعدادات</title>
+<style>
+  :root{--bg:#0a0e1a;--card:#141d33;--gold:#f5b50a;--gold2:#ffd25f;--accent:#00e0a4;--red:#ff3b5c;--text:#eef2fb;--muted:#8b97b5;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',system-ui,sans-serif}
+  body{background:radial-gradient(900px 500px at 50% -10%,#16203a,#0a0e1a 60%);color:var(--text);padding:24px;min-height:100vh}
+  .wrap{max-width:980px;margin:0 auto}
+  header{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+  .logo{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,var(--gold),var(--gold2));display:grid;place-items:center;font-weight:900;color:#0a0e1a;font-size:22px}
+  h1{font-size:22px}h1 span{color:var(--gold)}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:22px}
+  .tabs{display:flex;gap:8px;margin-bottom:18px}
+  .tab{padding:9px 18px;border-radius:12px;background:var(--card);border:1px solid var(--line);cursor:pointer;font-weight:600;font-size:14px;color:var(--muted)}
+  .tab.on{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0e1a;border-color:transparent}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:18px}
+  .panel h2{font-size:16px;margin-bottom:16px;color:var(--gold)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+  .row.three{grid-template-columns:1fr 1fr 1fr}
+  label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;font-weight:600}
+  input,select{width:100%;padding:11px 12px;border-radius:10px;background:#0e1626;border:1px solid var(--line);color:var(--text);font-size:14px}
+  input::placeholder{color:#4a5878}
+  input[type=color]{padding:4px;height:44px}
+  .srv-block{background:#0e1626;border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px}
+  .srv-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .srv-head b{font-size:13px}
+  button{cursor:pointer;border:none;font-weight:700;font-family:inherit}
+  .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0e1a;padding:11px 20px;border-radius:11px;font-size:14px}
+  .btn-ghost{background:transparent;border:1px solid var(--line);color:var(--text);padding:9px 14px;border-radius:10px;font-size:13px}
+  .btn-red{background:rgba(255,59,92,.15);color:var(--red);padding:7px 12px;border-radius:9px;font-size:12px;border:1px solid rgba(255,59,92,.3)}
+  .btn-sm{background:rgba(0,224,164,.12);color:var(--accent);padding:7px 12px;border-radius:9px;font-size:12px;border:1px solid rgba(0,224,164,.3)}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 20px}
+  .list-item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+  .list-item .info{font-size:14px;font-weight:600}
+  .list-item .meta{font-size:12px;color:var(--muted);margin-top:3px}
+  .live{display:inline-block;background:var(--red);color:#fff;font-size:10px;font-weight:800;padding:2px 8px;border-radius:6px;margin-right:6px}
+  textarea{width:100%;height:300px;background:#0a1020;border:1px solid var(--line);border-radius:12px;color:var(--accent);font-family:monospace;font-size:12px;padding:14px;direction:ltr;resize:vertical}
+  .out-actions{display:flex;gap:10px;margin-top:12px}
+  .hint{font-size:12px;color:var(--muted);background:rgba(245,181,10,.08);border:1px solid rgba(245,181,10,.25);border-radius:10px;padding:12px;margin-bottom:16px;line-height:1.7}
+  .hide{display:none}
+  .empty{color:var(--muted);text-align:center;padding:20px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">R</div>
+    <div>
+      <h1>ROOK<span> Sport</span></h1>
+      <div class="sub" style="margin:0">محرر إعدادات البث — يولّد ملف config.json تلقائياً</div>
+    </div>
+  </header>
+
+  <div class="hint">
+    💡 أضف مبارياتك وقنواتك من الأسفل، ثم اضغط <b>"توليد config.json"</b> وانسخ الناتج وارفعه على GitHub. شاهد الخطوات الكاملة في ملف <b>دليل_التحكم.md</b>.
+  </div>
+
+  <div class="tabs">
+    <div class="tab on" data-t="matches">⚽ المباريات</div>
+    <div class="tab" data-t="channels">📺 القنوات</div>
+    <div class="tab" data-t="output">📄 الناتج (JSON)</div>
+  </div>
+
+  <!-- MATCHES -->
+  <div id="matches">
+    <div class="panel">
+      <h2>إضافة مباراة جديدة</h2>
+      <div class="row">
+        <div><label>اسم البطولة</label><input id="m_league" placeholder="دوري أبطال أوروبا"></div>
+        <div><label>اختصار البطولة</label><input id="m_league_s" placeholder="UCL"></div>
+      </div>
+      <div class="row three">
+        <div><label>الفريق الأول</label><input id="m_h_name" placeholder="ريال مدريد"></div>
+        <div><label>اختصاره</label><input id="m_h_abbr" placeholder="RM" maxlength="3"></div>
+        <div><label>لونه</label><input type="color" id="m_h_color" value="#C8102E"></div>
+      </div>
+      <div class="row three">
+        <div><label>الفريق الثاني</label><input id="m_a_name" placeholder="برشلونة"></div>
+        <div><label>اختصاره</label><input id="m_a_abbr" placeholder="FC" maxlength="3"></div>
+        <div><label>لونه</label><input type="color" id="m_a_color" value="#004D98"></div>
+      </div>
+      <div class="row three">
+        <div><label>مباشر الآن؟</label><select id="m_live"><option value="false">لا</option><option value="true">نعم</option></select></div>
+        <div><label>الدقيقة (إن مباشرة)</label><input id="m_min" placeholder="67'"></div>
+        <div><label>وقت البداية</label><input id="m_kick" placeholder="21:00"></div>
+      </div>
+      <div class="row three">
+        <div><label>اليوم</label><input id="m_day" placeholder="اليوم"></div>
+        <div><label>نتيجة الأول</label><input id="m_h_sc" placeholder="2" type="number"></div>
+        <div><label>نتيجة الثاني</label><input id="m_a_sc" placeholder="1" type="number"></div>
+      </div>
+      <label style="margin-top:8px">سيرفرات البث (روابط m3u8)</label>
+      <div id="m_servers"></div>
+      <div class="toolbar">
+        <button class="btn-sm" onclick="addServer('m_servers')">➕ إضافة سيرفر</button>
+      </div>
+      <button class="btn-gold" onclick="addMatch()">➕ إضافة المباراة للقائمة</button>
+    </div>
+    <h2 style="margin:0 4px 12px;font-size:15px">المباريات المضافة</h2>
+    <div id="match_list"><div class="empty">لا توجد مباريات بعد</div></div>
+  </div>
+
+  <!-- CHANNELS -->
+  <div id="channels" class="hide">
+    <div class="panel">
+      <h2>إضافة قناة جديدة</h2>
+      <div class="row">
+        <div><label>اسم القناة</label><input id="c_name" placeholder="ROOK Sport 1 HD"></div>
+        <div><label>المعروض الآن</label><input id="c_now" placeholder="الدوري الإنجليزي — مباشر"></div>
+      </div>
+      <div class="row three">
+        <div><label>التصنيف</label><select id="c_cat"><option>رياضة</option><option>أخبار</option><option>أفلام</option><option>وثائقي</option></select></div>
+        <div><label>اختصار</label><input id="c_abbr" placeholder="R1" maxlength="3"></div>
+        <div><label>الجودة</label><select id="c_q"><option>HD</option><option>FHD</option><option>4K</option></select></div>
+      </div>
+      <div class="row three">
+        <div><label>لون 1</label><input type="color" id="c_c1" value="#5B2A86"></div>
+        <div><label>لون 2</label><input type="color" id="c_c2" value="#2D1245"></div>
+        <div><label>مباشر؟</label><select id="c_live"><option value="true">نعم</option><option value="false">لا</option></select></div>
+      </div>
+      <label style="margin-top:8px">سيرفرات البث (روابط m3u8)</label>
+      <div id="c_servers"></div>
+      <div class="toolbar"><button class="btn-sm" onclick="addServer('c_servers')">➕ إضافة سيرفر</button></div>
+      <button class="btn-gold" onclick="addChannel()">➕ إضافة القناة للقائمة</button>
+    </div>
+    <h2 style="margin:0 4px 12px;font-size:15px">القنوات المضافة</h2>
+    <div id="channel_list"><div class="empty">لا توجد قنوات بعد</div></div>
+  </div>
+
+  <!-- OUTPUT -->
+  <div id="output" class="hide">
+    <div class="panel">
+      <h2>ملف config.json الجاهز</h2>
+      <div class="row" style="grid-template-columns:1fr">
+        <div><label>شريط إعلان (اختياري)</label><input id="g_notice" placeholder="مرحباً بك في ROOK Sport" value="مرحباً بك في ROOK Sport — البث المباشر بجودة عالية"></div>
+      </div>
+      <button class="btn-gold" onclick="generate()" style="margin:6px 0 14px">🔄 توليد config.json</button>
+      <textarea id="json_out" readonly></textarea>
+      <div class="out-actions">
+        <button class="btn-gold" onclick="copyJson()">📋 نسخ</button>
+        <button class="btn-ghost" onclick="downloadJson()">⬇️ تنزيل config.json</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let matches = [], channels = [];
+
+// tab switching
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+  t.classList.add('on');
+  ['matches','channels','output'].forEach(id=>document.getElementById(id).classList.add('hide'));
+  document.getElementById(t.dataset.t).classList.remove('hide');
+  if(t.dataset.t==='output') generate();
+});
+
+let srvCount = {};
+function addServer(containerId){
+  srvCount[containerId] = (srvCount[containerId]||0)+1;
+  const i = srvCount[containerId];
+  const div = document.createElement('div');
+  div.className='srv-block';
+  div.innerHTML = `
+    <div class="srv-head"><b>سيرفر ${i}</b><button class="btn-red" onclick="this.closest('.srv-block').remove()">حذف</button></div>
+    <div class="row"><div><label>اسم السيرفر</label><input class="s_name" placeholder="السيرفر الأول — HD"></div>
+    <div><label>اللغة/المعلق</label><input class="s_lang" placeholder="عربي • معلق محمد"></div></div>
+    <div class="row"><div><label>الجودة</label><input class="s_q" placeholder="1080p"></div>
+    <div><label>رابط m3u8</label><input class="s_url" placeholder="https://...stream.m3u8" dir="ltr"></div></div>`;
+  document.getElementById(containerId).appendChild(div);
+}
+function readServers(containerId){
+  return [...document.querySelectorAll('#'+containerId+' .srv-block')].map((b,i)=>({
+    id:'s'+(i+1),
+    name:b.querySelector('.s_name').value||('السيرفر '+(i+1)),
+    language:b.querySelector('.s_lang').value||'',
+    quality:b.querySelector('.s_q').value||'HD',
+    url:b.querySelector('.s_url').value||''
+  })).filter(s=>s.url);
+}
+function val(id){return document.getElementById(id).value.trim();}
+
+function addMatch(){
+  if(!val('m_h_name')||!val('m_a_name')){alert('أدخل أسماء الفرق');return;}
+  const m={
+    id:'match'+(matches.length+1+Date.now()%1000),
+    league:val('m_league'),league_short:val('m_league_s')||val('m_league'),
+    home_name:val('m_h_name'),home_abbr:val('m_h_abbr'),home_color:val('m_h_color'),
+    away_name:val('m_a_name'),away_abbr:val('m_a_abbr'),away_color:val('m_a_color'),
+    is_live:val('m_live')==='true',minute:val('m_min'),kickoff:val('m_kick'),day_label:val('m_day'),
+    servers:readServers('m_servers')
+  };
+  if(val('m_h_sc'))m.home_score=+val('m_h_sc');
+  if(val('m_a_sc'))m.away_score=+val('m_a_sc');
+  matches.push(m);
+  renderMatches();
+  document.querySelectorAll('#matches input').forEach(i=>{if(i.type!=='color')i.value='';});
+  document.getElementById('m_servers').innerHTML='';
+}
+function renderMatches(){
+  const c=document.getElementById('match_list');
+  if(!matches.length){c.innerHTML='<div class="empty">لا توجد مباريات بعد</div>';return;}
+  c.innerHTML=matches.map((m,i)=>`<div class="list-item"><div><div class="info">${m.is_live?'<span class="live">LIVE</span>':''}${m.home_name} × ${m.away_name}</div><div class="meta">${m.league} • ${m.servers.length} سيرفر</div></div><button class="btn-red" onclick="matches.splice(${i},1);renderMatches()">حذف</button></div>`).join('');
+}
+function addChannel(){
+  if(!val('c_name')){alert('أدخل اسم القناة');return;}
+  channels.push({
+    id:'ch'+(channels.length+1+Date.now()%1000),
+    name:val('c_name'),now_playing:val('c_now'),category:val('c_cat'),abbr:val('c_abbr'),
+    color1:val('c_c1'),color2:val('c_c2'),quality:val('c_q'),is_live:val('c_live')==='true',
+    servers:readServers('c_servers')
+  });
+  renderChannels();
+  document.querySelectorAll('#channels input').forEach(i=>{if(i.type!=='color')i.value='';});
+  document.getElementById('c_servers').innerHTML='';
+}
+function renderChannels(){
+  const c=document.getElementById('channel_list');
+  if(!channels.length){c.innerHTML='<div class="empty">لا توجد قنوات بعد</div>';return;}
+  c.innerHTML=channels.map((ch,i)=>`<div class="list-item"><div><div class="info">${ch.is_live?'<span class="live">LIVE</span>':''}${ch.name}</div><div class="meta">${ch.category} • ${ch.quality} • ${ch.servers.length} سيرفر</div></div><button class="btn-red" onclick="channels.splice(${i},1);renderChannels()">حذف</button></div>`).join('');
+}
+function generate(){
+  const cfg={app_name:'ROOK Sport',force_update:false,notice:val('g_notice'),matches,channels};
+  document.getElementById('json_out').value=JSON.stringify(cfg,null,2);
+}
+function copyJson(){generate();const t=document.getElementById('json_out');t.select();document.execCommand('copy');alert('تم النسخ ✅ — الصقه في config.json على GitHub');}
+function downloadJson(){generate();const blob=new Blob([document.getElementById('json_out').value],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='config.json';a.click();}
+// seed one server field for convenience
+addServer('m_servers');addServer('c_servers');
+</script>
+</body>
+</html>

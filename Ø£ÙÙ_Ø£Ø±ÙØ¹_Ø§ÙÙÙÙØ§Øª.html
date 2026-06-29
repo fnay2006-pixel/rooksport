@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أين أرفع الملفات على GitHub</title>
+<style>
+  :root{--bg:#0a0e1a;--card:#141d33;--gold:#f5b50a;--gold2:#ffd25f;--accent:#00e0a4;--red:#ff3b5c;--text:#eef2fb;--muted:#8b97b5;--line:rgba(255,255,255,.08)}
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
+  body{background:radial-gradient(900px 500px at 50% -10%,#16203a,#0a0e1a 60%);color:var(--text);padding:20px 14px;line-height:1.7}
+  .wrap{max-width:640px;margin:0 auto}
+  header{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+  .logo{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,var(--gold),var(--gold2));display:grid;place-items:center;font-weight:900;color:#0a0e1a;font-size:22px}
+  h1{font-size:20px}h1 span{color:var(--gold)}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:22px}
+
+  .step{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:16px;position:relative;overflow:hidden}
+  .step::before{content:'';position:absolute;top:0;right:0;width:5px;height:100%;background:linear-gradient(var(--gold),var(--gold2))}
+  .num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0e1a;font-weight:900;font-size:15px;margin-left:10px;flex-shrink:0}
+  .step h2{font-size:16px;display:flex;align-items:center;margin-bottom:12px}
+  .step p{font-size:14px;color:#cdd6ec;margin-bottom:8px}
+
+  /* محاكاة شاشة المتصفح */
+  .browser{background:#0e1626;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:12px 0}
+  .bar{background:#1a2540;padding:8px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line)}
+  .bar .url{background:#0a0e1a;border-radius:6px;padding:5px 10px;font-size:11px;color:var(--muted);flex:1;direction:ltr;text-align:left;overflow:hidden;white-space:nowrap}
+  .screen{padding:14px}
+
+  .ghtab{display:flex;gap:14px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:12px;overflow-x:auto}
+  .ghtab span{font-size:12px;color:var(--muted);white-space:nowrap;padding-bottom:6px}
+  .ghtab span.on{color:var(--gold);font-weight:800;border-bottom:2px solid var(--gold)}
+  .ghbtn{display:inline-block;background:#238636;color:#fff;padding:8px 14px;border-radius:8px;font-size:13px;font-weight:700;margin:4px 0}
+  .ghbtn.gray{background:#21262d;border:1px solid var(--line)}
+  .ghbtn.point{box-shadow:0 0 0 3px rgba(245,181,10,.5);position:relative}
+  .hand{font-size:22px;animation:tap 1.2s infinite}
+  @keyframes tap{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+  .menu-item{background:#0a0e1a;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:13px;margin:6px 0;display:flex;align-items:center;gap:8px}
+  .menu-item.hl{border-color:var(--gold);box-shadow:0 0 0 2px rgba(245,181,10,.3)}
+  .dropzone{border:2px dashed var(--gold);border-radius:12px;padding:24px;text-align:center;color:var(--gold);font-size:13px;font-weight:600;background:rgba(245,181,10,.06);margin:8px 0}
+
+  .tip{background:rgba(0,224,164,.08);border:1px solid rgba(0,224,164,.3);border-radius:12px;padding:12px 14px;font-size:13px;margin:10px 0;color:#bff5e5}
+  .warn{background:rgba(255,59,92,.08);border:1px solid rgba(255,59,92,.3);border-radius:12px;padding:12px 14px;font-size:13px;margin:10px 0;color:#ffc2cd}
+  b.g{color:var(--gold)}
+  .arrow-down{text-align:center;color:var(--gold);font-size:24px;margin:-4px 0 8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">R</div>
+    <div>
+      <h1>أين أرفع الملفات؟ <span>GitHub</span></h1>
+    </div>
+  </header>
+  <p class="sub">دليل مصوّر: مكان رفع ملفات ROOK Sport بالضبط من هاتفك 📱</p>
+
+  <!-- step 1 -->
+  <div class="step">
+    <h2><span class="num">1</span> افتح مستودعك على GitHub</h2>
+    <p>بعد إنشاء المستودع <b class="g">rook-sport</b>، افتح صفحته. ستجد شريط التبويبات في الأعلى:</p>
+    <div class="browser">
+      <div class="bar"><span>🔒</span><span class="url">github.com/اسمك/rook-sport</span></div>
+      <div class="screen">
+        <div class="ghtab"><span class="on">Code</span><span>Issues</span><span>Pull requests</span><span>Actions</span><span>Settings</span></div>
+        <p style="font-size:12px;color:var(--muted)">المستودع فارغ الآن — هنا سترفع الملفات ⬇️</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- step 2 -->
+  <div class="step">
+    <h2><span class="num">2</span> اضغط زر «Add file»</h2>
+    <p>في صفحة <b class="g">Code</b>، ابحث عن زر <b>Add file</b> (عادةً أعلى يمين قائمة الملفات) واضغطه:</p>
+    <div class="browser">
+      <div class="bar"><span>🔒</span><span class="url">github.com/اسمك/rook-sport</span></div>
+      <div class="screen" style="text-align:left;direction:ltr">
+        <span class="ghbtn gray">＋ Add file ▾</span> <span class="hand">👆</span>
+        <span class="ghbtn">&lt;&gt; Code ▾</span>
+      </div>
+    </div>
+    <p>ستظهر قائمة منسدلة، اختر منها:</p>
+    <div class="menu-item">📝 Create new file</div>
+    <div class="menu-item hl">📤 Upload files ← <b class="g">اختر هذا</b></div>
+  </div>
+
+  <!-- step 3 -->
+  <div class="step">
+    <h2><span class="num">3</span> ارفع الملفات هنا</h2>
+    <p>ستفتح صفحة الرفع. اسحب الملفات أو اضغط <b>choose your files</b> لاختيارها من جوالك:</p>
+    <div class="browser">
+      <div class="bar"><span>🔒</span><span class="url">.../rook-sport/upload/main</span></div>
+      <div class="screen">
+        <div class="dropzone">
+          📁 اسحب الملفات هنا<br>
+          <span style="font-size:12px;color:var(--muted)">أو اضغط «choose your files»</span>
+          <div style="margin-top:8px"><span class="hand">👆</span></div>
+        </div>
+        <p style="font-size:12px;color:var(--muted)">اختر <b class="g">كل</b> الملفات والمجلدات داخل مجلد ZonaSportApp</p>
+      </div>
+    </div>
+    <div class="arrow-down">▼</div>
+    <p>ثم انزل لأسفل واكتب أي وصف، واضغط الزر الأخضر:</p>
+    <div style="text-align:left;direction:ltr"><span class="ghbtn point">Commit changes</span> <span class="hand">👆</span></div>
+  </div>
+
+  <!-- IMPORTANT -->
+  <div class="step">
+    <h2><span class="num">⚠️</span> أهم نقطة: المجلد المخفي <code>.github</code></h2>
+    <div class="warn">
+      مجلد <b>.github</b> (الذي يبدأ بنقطة) يحتوي تعليمات بناء الـ APK. بعض تطبيقات الملفات
+      <b>تخفيه</b>. بدونه لن يعمل البناء!
+    </div>
+    <p><b class="g">الحل الأسهل:</b> ارفع الملفات على عدة دفعات، وتأكد أن تطبيق إدارة الملفات لديك مفعّل فيه خيار «إظهار الملفات المخفية».</p>
+    <div class="tip">
+      💡 <b>بديل ذكي إن لم يظهر:</b> أنشئ الملف يدوياً —<br>
+      اضغط <b>Add file → Create new file</b>، واكتب في خانة الاسم بالضبط:<br>
+      <code style="color:var(--gold);direction:ltr;display:inline-block">.github/workflows/build-apk.yml</code><br>
+      ثم الصق محتوى الملف (موجود في المشروع)، واحفظ. GitHub سينشئ المجلدات تلقائياً!
+    </div>
+  </div>
+
+  <!-- step 4 -->
+  <div class="step">
+    <h2><span class="num">4</span> شغّل البناء</h2>
+    <p>بعد رفع كل الملفات، اذهب لتبويب <b class="g">Actions</b> في الأعلى:</p>
+    <div class="browser">
+      <div class="bar"><span>🔒</span><span class="url">github.com/اسمك/rook-sport</span></div>
+      <div class="screen">
+        <div class="ghtab"><span>Code</span><span class="on">Actions ← 👆</span><span>Settings</span></div>
+        <div class="menu-item hl">▶️ بناء تطبيق ROOK Sport (APK)</div>
+        <p style="font-size:12px;color:var(--muted);margin-top:8px">اضغط عليه ← ثم زر <b>Run workflow</b> الرمادي</p>
+      </div>
+    </div>
+    <div class="tip">
+      بعد ~5 دقائق تظهر علامة ✅ خضراء. اضغط عليها → انزل لأسفل → قسم <b>Artifacts</b> → نزّل
+      <b class="g">ROOK-Sport-APK</b>. فُكّ الضغط ← ثبّت <b>app-debug.apk</b>. تم! 🎉
+    </div>
+  </div>
+
+  <p style="text-align:center;color:var(--muted);font-size:12px;margin-top:20px">
+    الشرح الكامل في ملف: كيف_تبني_APK_من_الهاتف.md
+  </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حل رفع المجلدات على GitHub من الجوال</title>
+<style>
+  :root{--bg:#0a0e1a;--card:#141d33;--gold:#f5b50a;--gold2:#ffd25f;--accent:#00e0a4;--accent2:#00b4ff;--red:#ff3b5c;--text:#eef2fb;--muted:#8b97b5;--line:rgba(255,255,255,.08)}
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
+  body{background:radial-gradient(900px 500px at 50% -10%,#16203a,#0a0e1a 60%);color:var(--text);padding:20px 14px;line-height:1.75}
+  .wrap{max-width:660px;margin:0 auto}
+  header{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+  .logo{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,var(--gold),var(--gold2));display:grid;place-items:center;font-weight:900;color:#0a0e1a;font-size:22px}
+  h1{font-size:19px}h1 span{color:var(--gold)}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:8px}
+  .why{background:rgba(255,59,92,.08);border:1px solid rgba(255,59,92,.3);border-radius:14px;padding:14px 16px;font-size:13px;margin:14px 0 24px;color:#ffd0d8}
+  .why b{color:#ff6b82}
+
+  .method{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:18px;position:relative;overflow:hidden}
+  .method::before{content:'';position:absolute;top:0;right:0;width:5px;height:100%}
+  .m1::before{background:linear-gradient(var(--accent),#00b894)}
+  .m2::before{background:linear-gradient(var(--gold),var(--gold2))}
+  .m3::before{background:linear-gradient(var(--accent2),#0077cc)}
+  .badge{display:inline-block;font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px;margin-bottom:10px}
+  .b-best{background:rgba(0,224,164,.15);color:var(--accent)}
+  .b-ok{background:rgba(245,181,10,.15);color:var(--gold)}
+  .b-adv{background:rgba(0,180,255,.15);color:var(--accent2)}
+  .method h2{font-size:17px;margin-bottom:6px}
+  .method .lead{font-size:13px;color:var(--muted);margin-bottom:14px}
+
+  ol{margin:0 18px 0 0;padding-right:6px}
+  ol li{font-size:14px;margin-bottom:11px;color:#dce3f2}
+  ol li b{color:var(--gold)}
+  code{background:#0a0e1a;border:1px solid var(--line);border-radius:6px;padding:2px 7px;font-size:12px;color:var(--accent);direction:ltr;display:inline-block}
+
+  .menu-sim{background:#0e1626;border:1px solid var(--line);border-radius:10px;padding:6px;margin:10px 0}
+  .menu-sim div{padding:9px 12px;font-size:13px;border-radius:7px;display:flex;align-items:center;gap:8px}
+  .menu-sim div.hl{background:rgba(245,181,10,.12);border:1px solid var(--gold);color:var(--gold);font-weight:700}
+  .hand{animation:tap 1.2s infinite;display:inline-block}
+  @keyframes tap{0%,100%{transform:translateX(0)}50%{transform:translateX(-4px)}}
+  .tip{background:rgba(0,224,164,.08);border:1px solid rgba(0,224,164,.3);border-radius:10px;padding:11px 13px;font-size:12.5px;margin:12px 0;color:#bff5e5}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">R</div>
+    <div><h1>رفع المجلدات من <span>الجوال</span></h1></div>
+  </header>
+  <p class="sub">3 حلول مرتّبة من الأسهل — اختر واحداً</p>
+
+  <div class="why">
+    <b>لماذا لا تستطيع رفع المجلدات؟</b><br>
+    متصفح الجوال في وضعه العادي يرفع <b>ملفات مفردة فقط</b>، ولا يسمح باختيار مجلد كامل.
+    هذه ميزة متاحة في وضع «الحاسوب». الحلول التالية تتجاوز هذه المشكلة.
+  </div>
+
+  <!-- METHOD 1 -->
+  <div class="method m1">
+    <span class="badge b-best">⭐ الأسهل والموصى به</span>
+    <h2>1) فعّل وضع «موقع الحاسوب» Desktop Site</h2>
+    <p class="lead">حيلة بسيطة تجعل متصفح جوالك يرفع المجلدات تماماً كالحاسوب.</p>
+    <ol>
+      <li>افتح مستودعك على GitHub بمتصفح <b>Chrome</b> في جوالك.</li>
+      <li>اضغط على النقاط الثلاث <b>⋮</b> أعلى يمين المتصفح.</li>
+      <li>فعّل خيار <b>«موقع كمبيوتر / Desktop site»</b>:
+        <div class="menu-sim">
+          <div>🔖 إضافة إلى المفضلة</div>
+          <div class="hl">🖥️ موقع كمبيوتر ✓ <span class="hand">👈</span></div>
+          <div>🔍 بحث في الصفحة</div>
+        </div>
+      </li>
+      <li>الآن اضغط <b>Add file → Upload files</b>.</li>
+      <li>عند الرفع، ستظهر إمكانية اختيار <b>مجلد كامل</b> — اختر مجلد <code>ZonaSportApp</code>.</li>
+      <li>اضغط <b>Commit changes</b>. تم رفع كل شيء دفعة واحدة! ✅</li>
+    </ol>
+    <div class="tip">💡 إن لم يظهر اختيار المجلد، جرّب الضغط مطوّلاً على منطقة الرفع، أو استخدم الحل الثاني.</div>
+  </div>
+
+  <!-- METHOD 2 -->
+  <div class="method m2">
+    <span class="badge b-ok">📁 بديل بسيط جداً</span>
+    <h2>2) ارفع ملف ZIP ثم استورده عبر «gitzip» أو يدوياً</h2>
+    <p class="lead">GitHub لا يفكّ ZIP تلقائياً، لكن نتجاوز ذلك بإنشاء الملفات المهمة يدوياً.</p>
+    <ol>
+      <li>الملف الأهم الوحيد لتشغيل البناء هو ملف واحد فقط:
+        <code>.github/workflows/build-apk.yml</code></li>
+      <li>اضغط <b>Add file → Create new file</b>.</li>
+      <li>اكتب في خانة الاسم بالضبط:<br>
+        <code>.github/workflows/build-apk.yml</code><br>
+        (الشرطة المائلة <b>/</b> تنشئ المجلدات تلقائياً!)</li>
+      <li>الصق محتوى الملف، واحفظ (Commit).</li>
+      <li>كرّر نفس الفكرة لبقية الملفات المهمة، أو ارفعها مجموعة بعد مجموعة عبر Upload files (ملفات لا مجلدات).</li>
+    </ol>
+    <div class="tip">💡 خانة اسم الملف في GitHub هي <b>الحيلة الذهبية</b>: كل <code>/</code> تكتبها تنشئ مجلداً.</div>
+  </div>
+
+  <!-- METHOD 3 -->
+  <div class="method m3">
+    <span class="badge b-adv">🔧 للمتقدمين</span>
+    <h2>3) تطبيق MGit أو Termux (رفع كامل بأمر واحد)</h2>
+    <p class="lead">يرفع المشروع كله مرة واحدة، لكنه يحتاج خطوات إعداد أكثر.</p>
+    <ol>
+      <li>ثبّت تطبيق <b>MGit</b> (أو Termux) من Google Play.</li>
+      <li>أنشئ <b>Personal Access Token</b> من
+        <code>github.com/settings/tokens</code> (صلاحية repo).</li>
+      <li>في MGit: <b>Clone</b> مستودعك، انسخ ملفات المشروع داخله،
+        ثم <b>Add all → Commit → Push</b>.</li>
+      <li>يرفع كل المجلدات والملفات دفعة واحدة. ✅</li>
+    </ol>
+    <div class="tip">💡 شرح Termux بالأوامر: <code>pkg install git</code> ثم <code>git clone</code> ثم <code>git add . && git commit -m up && git push</code>.</div>
+  </div>
+
+  <p style="text-align:center;color:var(--muted);font-size:12px;margin-top:14px">
+    نصيحتي: ابدأ بالحل <b style="color:var(--accent)">الأول</b> (Desktop Site) — أسرع وأسهل طريقة.
+  </p>
+</div>
+</body>
+</html>

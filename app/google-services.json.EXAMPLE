@@ -1,0 +1,26 @@
+{
+  "_ملاحظة": "هذا ملف نموذجي فقط. استبدله بملفك الحقيقي من Firebase ثم احذف '.EXAMPLE' من الاسم ليصبح google-services.json",
+  "project_info": {
+    "project_number": "000000000000",
+    "project_id": "rook-sport-example",
+    "storage_bucket": "rook-sport-example.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:000000000000:android:0000000000000000000000",
+        "android_client_info": {
+          "package_name": "com.rook.sport"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        { "current_key": "AIzaSyEXAMPLE_REPLACE_WITH_REAL_KEY_0000000" }
+      ],
+      "services": {
+        "appinvite_service": { "other_platform_oauth_client": [] }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

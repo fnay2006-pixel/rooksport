@@ -1,0 +1,107 @@
+{
+  "app_name": "ROOK Sport",
+  "force_update": false,
+  "notice": "مرحباً بك في ROOK Sport — البث المباشر بجودة عالية",
+
+  "matches": [
+    {
+      "id": "match1",
+      "league": "دوري أبطال أوروبا",
+      "league_short": "UCL",
+      "home_name": "ريال مدريد",
+      "home_abbr": "RM",
+      "home_color": "#C8102E",
+      "away_name": "برشلونة",
+      "away_abbr": "FC",
+      "away_color": "#004D98",
+      "home_score": 2,
+      "away_score": 1,
+      "is_live": true,
+      "minute": "67'",
+      "kickoff": "21:00",
+      "day_label": "اليوم",
+      "servers": [
+        {
+          "id": "s1",
+          "name": "السيرفر الأول — HD",
+          "language": "عربي • معلق محمد",
+          "quality": "1080p",
+          "url": "https://ضع-رابط-m3u8-هنا/stream.m3u8"
+        },
+        {
+          "id": "s2",
+          "name": "السيرفر الثاني — FHD",
+          "language": "إنجليزي",
+          "quality": "1080p",
+          "url": "https://ضع-رابط-احتياطي/stream2.m3u8"
+        }
+      ]
+    },
+    {
+      "id": "match2",
+      "league": "الدوري الإنجليزي",
+      "league_short": "البريميرليغ",
+      "home_name": "ليفربول",
+      "home_abbr": "LI",
+      "home_color": "#C8102E",
+      "away_name": "مان سيتي",
+      "away_abbr": "MC",
+      "away_color": "#6CABDD",
+      "is_live": false,
+      "kickoff": "23:00",
+      "day_label": "اليوم",
+      "servers": [
+        {
+          "id": "s1",
+          "name": "السيرفر الرئيسي",
+          "language": "عربي",
+          "quality": "HD",
+          "url": "https://ضع-رابط-m3u8-هنا/liverpool.m3u8"
+        }
+      ]
+    }
+  ],
+
+  "channels": [
+    {
+      "id": "ch1",
+      "name": "ROOK Sport 1 HD",
+      "now_playing": "الدوري الإنجليزي — مباشر",
+      "category": "رياضة",
+      "abbr": "R1",
+      "color1": "#5B2A86",
+      "color2": "#2D1245",
+      "quality": "HD",
+      "is_live": true,
+      "servers": [
+        {
+          "id": "s1",
+          "name": "البث الرئيسي",
+          "language": "عربي",
+          "quality": "1080p",
+          "url": "https://ضع-رابط-القناة-هنا/channel1.m3u8"
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "name": "ROOK Sport 2 4K",
+      "now_playing": "الدوري الإسباني — مباشر",
+      "category": "رياضة",
+      "abbr": "R2",
+      "color1": "#0A5C4A",
+      "color2": "#03281F",
+      "quality": "4K",
+      "is_live": true,
+      "servers": [
+        {
+          "id": "s1",
+          "name": "البث الرئيسي",
+          "language": "عربي",
+          "quality": "2160p",
+          "url": "https://ضع-رابط-القناة-هنا/channel2.m3u8"
+        }
+      ]
+    }
+  ]
+}
