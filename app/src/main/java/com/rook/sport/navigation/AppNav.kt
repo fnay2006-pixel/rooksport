@@ -38,8 +38,8 @@ import com.rook.sport.ui.theme.*
 
 sealed class Tab(val route: String, val label: String, val icon: ImageVector) {
     data object Home : Tab("home", "الرئيسية", Icons.Default.Home)
-    data object Channels : Tab("channels", "القنوات", Icons.Default.LiveTv)
-    data object Matches : Tab("matches", "المباريات", Icons.Default.CalendarMonth)
+    data object Channels : Tab("channels", "القنوات", Icons.Default.Tv)
+    data object Matches : Tab("matches", "المباريات", Icons.Default.DateRange)
     data object Profile : Tab("profile", "حسابي", Icons.Default.Person)
 }
 
